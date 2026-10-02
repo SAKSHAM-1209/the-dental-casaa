@@ -1,0 +1,16 @@
+# Roadmap
+- [x] Build responsive homepage in the requested section order
+- [x] Add data-driven content and reusable components
+- [x] Add independent treatment detail routes and metadata
+- [x] Verify desktop/mobile layout, controls, accessibility, and motion
+- [x] Confirm no doctor/team section and no AI chatbot
+- [x] Add a guided appointment flow with available request times, contact validation, and confirmation
+- [x] Rebalance section colors for a restrained editorial clinic aesthetic
+- [ ] Add patient email confirmations and clinic booking notifications
+- [x] Complete premium booking-flow visual and interaction verification
+- [x] Refine mobile booking layout, accessible feedback, and submission loading state
+- [x] Apply The Dental Casaa branding and exact Shahdara address
+- [x] Add local metadata and Dentist structured data without unverified claims
+- [x] Verify logo, address, metadata, headings, robots, and responsive rendering
+- [x] Export the full project source as a single downloadable ZIP
+- [ ] Add a floating WhatsApp contact button (needs the clinic's real WhatsApp number)
