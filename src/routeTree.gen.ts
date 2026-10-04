@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TreatmentsSlugRouteImport } from './routes/treatments.$slug'
@@ -17,6 +18,11 @@ import { Route as TreatmentsSlugRouteImport } from './routes/treatments.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -37,12 +43,14 @@ const TreatmentsSlugRoute = TreatmentsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/treatments/$slug': typeof TreatmentsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/treatments/$slug': typeof TreatmentsSlugRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/treatments/$slug': typeof TreatmentsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privacy' | '/terms' | '/treatments/$slug'
+  fullPaths: '/' | '/about' | '/privacy' | '/terms' | '/treatments/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacy' | '/terms' | '/treatments/$slug'
-  id: '__root__' | '/' | '/privacy' | '/terms' | '/treatments/$slug'
+  to: '/' | '/about' | '/privacy' | '/terms' | '/treatments/$slug'
+  id: '__root__' | '/' | '/about' | '/privacy' | '/terms' | '/treatments/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
   TreatmentsSlugRoute: typeof TreatmentsSlugRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
   TreatmentsSlugRoute: TreatmentsSlugRoute,
